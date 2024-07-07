@@ -14,4 +14,9 @@ public partial class GameManager : Node
     private void UpdateCityHealthUI() {
 		cityHealthLabel.Text = $"Health: {cityHealth}/100";
 	}
+
+	private void OnLamaniteAttack(int damageDealt) {
+		cityHealth -= damageDealt;
+		UpdateCityHealthUI();
+	}
 }

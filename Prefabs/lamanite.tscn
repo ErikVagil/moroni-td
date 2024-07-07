@@ -20,3 +20,8 @@ texture = SubResource("GradientTexture2D_vhkn5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_iclou")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="CooldownTimer" to="." method="OnTimerTimeout"]
