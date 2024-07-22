@@ -1,4 +1,29 @@
-[gd_scene format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=5 format=3 uid="uid://juwrxatulykq"]
+
+[ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
+[ext_resource type="PackedScene" uid="uid://bertex1jsehpu" path="res://Prefabs/Lamanite.tscn" id="1_hc0gf"]
+[ext_resource type="PackedScene" uid="uid://cm5p8fbcogrk3" path="res://Prefabs/City.tscn" id="1_n8t2r"]
+
+[sub_resource type="Curve2D" id="Curve2D_5tfj8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -100, 110, 0, 0, 0, 0, 140, 110, 0, 0, 0, 0, 140, 620, 0, 0, 0, 0, 370, 620, 0, 0, 0, 0, 370, 350, 0, 0, 0, 0, 980, 350, 0, 0, 0, 0, 980, 780, 0, 0, 0, 0, 550, 780, 0, 0, 0, 0, 550, 940, 0, 0, 0, 0, 1500, 940, 0, 0, 0, 0, 1500, 540, 0, 0, 0, 0, 1850, 540)
+}
+point_count = 12
 
 [node name="Level1" type="Node2D"]
-metadata/_edit_horizontal_guides_ = [1083.0]
+
+[node name="EnemyPath" type="Path2D" parent="."]
+position = Vector2(-0.0588608, 1.03562)
+scale = Vector2(0.99872, 0.990499)
+curve = SubResource("Curve2D_5tfj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyPath"]
+scale = Vector2(1, 1)
+texture = ExtResource("1_a8vht")
+centered = false
+
+[node name="Lamanite" parent="EnemyPath" instance=ExtResource("1_hc0gf")]
+position = Vector2(-100, 110)
+
+[node name="City" parent="." instance=ExtResource("1_n8t2r")]
+position = Vector2(1849, 529)

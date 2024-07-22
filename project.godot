@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Captain Moroni Tower Defense"
-run/main_scene="res://Scenes/game_scene.tscn"
+run/main_scene="res://Scenes/Level1.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

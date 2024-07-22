@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bertex1jsehpu"]
+
+[ext_resource type="Script" path="res://Scripts/Lamanite.cs" id="1_mixms"]
+
+[sub_resource type="Gradient" id="Gradient_t4oqh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eappp"]
+gradient = SubResource("Gradient_t4oqh")
+width = 20
+height = 32
+
+[node name="Lamanite" type="PathFollow2D"]
+z_index = 1
+position = Vector2(2.08165e-12, 2.08165e-12)
+rotates = false
+script = ExtResource("1_mixms")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_eappp")
