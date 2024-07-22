@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpkwuingvkygv"]
+
+[ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="1_fxeh8"]
+
+[node name="EnemySpawner" type="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_fxeh8")
+
+[node name="SpawnerTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="SpawnerTimer" to="." method="OnSpawnerTimerTimeout"]
