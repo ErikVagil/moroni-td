@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm5p8fbcogrk3"]
+[gd_scene load_steps=5 format=3 uid="uid://cm5p8fbcogrk3"]
+
+[ext_resource type="Script" path="res://Scripts/City.cs" id="1_qew2k"]
 
 [sub_resource type="Gradient" id="Gradient_jdann"]
 offsets = PackedFloat32Array(0)
@@ -9,7 +11,18 @@ gradient = SubResource("Gradient_jdann")
 width = 128
 height = 128
 
-[node name="City" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_excd4"]
+size = Vector2(124, 124)
+
+[node name="City" type="Area2D"]
+z_index = 2
+monitorable = false
+script = ExtResource("1_qew2k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_qhgtq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_excd4")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
