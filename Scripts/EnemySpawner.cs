@@ -26,7 +26,7 @@ public partial class EnemySpawner : Node2D
 	public void SpawnEnemy() {
 		// Using the enemy ID, find the scene to instantiate
 		int nextEnemyID = enemyIDQueue[queueIndex];
-		PackedScene enemyToSpawn = GameManager.enemyIDLookup[nextEnemyID];
+		PackedScene enemyToSpawn = GameManager.ENEMY_SCENES[nextEnemyID];
 		queueIndex++;
 		
 		// Instantiate the enemy and put it on the path
