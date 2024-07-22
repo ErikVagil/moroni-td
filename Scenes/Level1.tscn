@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://juwrxatulykq"]
+
+[node name="Level1" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [1083.0]
