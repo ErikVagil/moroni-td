@@ -17,21 +17,17 @@ public partial class EnemySpawner : Node2D
 		StartWave(enemyIDQueue);
 	}
 
-	public void StartWave(int[] waveEnemyQueue) {
-		SetEnemyIDQueue(waveEnemyQueue);
-		spawnerTimer.Start();
-	}
-
-	private void SetEnemyIDQueue(int[] enemyIDs) {
-		enemyIDQueue = enemyIDs;
+	public void StartWave(int[] enemyIDQueue) {
+		this.enemyIDQueue = enemyIDQueue;
 		queueIndex = 0;
+		spawnerTimer.Start();
 	}
 
 	public void SpawnEnemy() {
 		// Using the enemy ID, find the scene to instantiate
-		PackedScene enemyToSpawn = GameManager.enemyIDLookup[enemyIDQueue[queueIndex]];
+		int nextEnemyID = enemyIDQueue[queueIndex];
+		PackedScene enemyToSpawn = GameManager.enemyIDLookup[nextEnemyID];
 		queueIndex++;
-		GD.Print($"Queue Index: {queueIndex}");
 		
 		// Instantiate the enemy and put it on the path
 		var enemyInstance = enemyToSpawn.Instantiate();
@@ -39,13 +35,9 @@ public partial class EnemySpawner : Node2D
 	}
 
 	private void OnSpawnerTimerTimeout() {
-		// Kill the timer if there's no more enemies to spawn
-		if (queueIndex >= enemyIDQueue.Length) {
-			return;
+		if (queueIndex < enemyIDQueue.Length) {
+			SpawnEnemy();
+			spawnerTimer.Start();
 		}
-
-		// If there's an enemy in the queue, spawn it and start the cooldown timer
-		SpawnEnemy();
-		spawnerTimer.Start();
 	}
 }
