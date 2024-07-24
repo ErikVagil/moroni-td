@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=8 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
+[ext_resource type="Texture2D" uid="uid://csp6jlt6mpiqo" path="res://Assets/background.png" id="1_djpkt"]
 [ext_resource type="PackedScene" uid="uid://cm5p8fbcogrk3" path="res://Prefabs/City.tscn" id="1_n8t2r"]
 [ext_resource type="PackedScene" uid="uid://cpkwuingvkygv" path="res://Prefabs/EnemySpawner.tscn" id="4_v5mgf"]
 
@@ -47,6 +48,19 @@ label_settings = SubResource("LabelSettings_7ms1s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="BackgroundLayer"]
+position = Vector2(964, 537)
+texture = ExtResource("1_djpkt")
+
+[node name="PathSprite" type="Sprite2D" parent="BackgroundLayer"]
+position = Vector2(-0.0588608, 1.03562)
+scale = Vector2(0.99872, 0.990499)
+texture = ExtResource("1_a8vht")
+centered = false
+
 [node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_ay1pj")
@@ -55,12 +69,6 @@ script = ExtResource("1_ay1pj")
 position = Vector2(-50, 110)
 enemyIDQueue = PackedInt32Array(0, 0, 0, 0, 0)
 
-[node name="PathSprite" type="Sprite2D" parent="."]
-position = Vector2(-0.0588608, 1.03562)
-scale = Vector2(0.99872, 0.990499)
-texture = ExtResource("1_a8vht")
-centered = false
-
 [node name="EnemyPath" type="Path2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-0.0588608, 1.03562)
@@ -68,4 +76,4 @@ scale = Vector2(0.99872, 0.990499)
 curve = SubResource("Curve2D_5tfj8")
 
 [node name="City" parent="." instance=ExtResource("1_n8t2r")]
-position = Vector2(1849, 529)
+position = Vector2(1839, 509)

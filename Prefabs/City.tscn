@@ -1,28 +1,123 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm5p8fbcogrk3"]
+[gd_scene load_steps=11 format=3 uid="uid://cm5p8fbcogrk3"]
 
 [ext_resource type="Script" path="res://Scripts/City.cs" id="1_qew2k"]
+[ext_resource type="Texture2D" uid="uid://0ru7qdo4oiwi" path="res://Assets/city_sheet.png" id="2_hsd1r"]
 
-[sub_resource type="Gradient" id="Gradient_jdann"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.947228, 0.874563, 0.687754, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_con1v"]
+atlas = ExtResource("2_hsd1r")
+region = Rect2(0, 0, 160, 160)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhgtq"]
-gradient = SubResource("Gradient_jdann")
-width = 128
-height = 128
+[sub_resource type="AtlasTexture" id="AtlasTexture_psdgd"]
+atlas = ExtResource("2_hsd1r")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p82m4"]
+atlas = ExtResource("2_hsd1r")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3h7w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_con1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psdgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p82m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psdgd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_excd4"]
-size = Vector2(124, 124)
+size = Vector2(138, 142)
+
+[sub_resource type="Animation" id="Animation_jjxh8"]
+resource_name = "attacked"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1.7411, 1, 1, 0.233258),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 2.08165e-12), Vector2(-10, 2.08165e-12), Vector2(5, 2.08165e-12), Vector2(-5, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(3.4822, 1),
+"update": 0,
+"values": [Color(0.993581, 0.593155, 0.53559, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ucpac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_luylr"]
+_data = {
+"RESET": SubResource("Animation_ucpac"),
+"attacked": SubResource("Animation_jjxh8")
+}
 
 [node name="City" type="Area2D"]
 z_index = 2
 monitorable = false
 script = ExtResource("1_qew2k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_qhgtq")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3h7w2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.162295
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_excd4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_luylr")
+}
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
