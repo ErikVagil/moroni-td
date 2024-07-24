@@ -11,12 +11,19 @@ public partial class GameManager : Node2D
 	private const int maxCityHealth = 50;
 	private int cityHealth = 50;
 
-	public void updateHealth(int changeInHealth) {
+	private Label healthLabel = null;
+
+    public override void _Ready()
+    {
+		healthLabel = GetNode<Label>("%HealthLabel");
+    }
+
+    public void updateHealth(int changeInHealth) {
 		int newHealth = cityHealth + changeInHealth;
 		if (newHealth <= maxCityHealth && newHealth >= 0) {
 			cityHealth = newHealth;
 		}
 
-		GD.Print($"City health: {cityHealth}");
+		healthLabel.Text = $"Health: {cityHealth}/{maxCityHealth}";
 	}
 }

@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=7 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
 [ext_resource type="PackedScene" uid="uid://cm5p8fbcogrk3" path="res://Prefabs/City.tscn" id="1_n8t2r"]
 [ext_resource type="PackedScene" uid="uid://cpkwuingvkygv" path="res://Prefabs/EnemySpawner.tscn" id="4_v5mgf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ms1s"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="Curve2D" id="Curve2D_5tfj8"]
 _data = {
@@ -12,6 +18,34 @@ _data = {
 point_count = 12
 
 [node name="Level1" type="Node2D"]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthLabel" type="Label" parent="UILayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.889
+anchor_right = 1.0
+anchor_bottom = 0.048
+offset_left = 71.1199
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = 0.16
+grow_horizontal = 0
+text = "Health: 50/50
+"
+label_settings = SubResource("LabelSettings_7ms1s")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true
