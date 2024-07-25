@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GameManager : Node2D
+public partial class GameManager : Node
 {
 	// Array containing all of the loaded enemy scenes
 	public static readonly Godot.Collections.Array<PackedScene> ENEMY_SCENES = new Godot.Collections.Array<PackedScene> {

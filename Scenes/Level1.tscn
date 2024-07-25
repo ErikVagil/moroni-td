@@ -20,6 +20,10 @@ point_count = 12
 
 [node name="Level1" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_ay1pj")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UILayer"]
@@ -29,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="HealthLabel" type="Label" parent="UILayer/Control"]
 unique_name_in_owner = true
@@ -52,18 +57,17 @@ vertical_alignment = 1
 layer = -1
 
 [node name="Background" type="Sprite2D" parent="BackgroundLayer"]
-position = Vector2(964, 537)
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("1_djpkt")
+centered = false
+metadata/_edit_lock_ = true
 
 [node name="PathSprite" type="Sprite2D" parent="BackgroundLayer"]
-position = Vector2(-0.0588608, 1.03562)
+position = Vector2(2.08165e-12, 2.08165e-12)
 scale = Vector2(0.99872, 0.990499)
 texture = ExtResource("1_a8vht")
 centered = false
-
-[node name="GameManager" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_ay1pj")
+metadata/_edit_lock_ = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_v5mgf")]
 position = Vector2(-50, 110)
