@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=9 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
 [ext_resource type="Texture2D" uid="uid://csp6jlt6mpiqo" path="res://Assets/background.png" id="1_djpkt"]
 [ext_resource type="PackedScene" uid="uid://cm5p8fbcogrk3" path="res://Prefabs/City.tscn" id="1_n8t2r"]
 [ext_resource type="PackedScene" uid="uid://cpkwuingvkygv" path="res://Prefabs/EnemySpawner.tscn" id="4_v5mgf"]
+[ext_resource type="PackedScene" uid="uid://bx8d8qt0jx4rl" path="res://Prefabs/Tower.tscn" id="6_w4ejl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ms1s"]
 font_size = 32
@@ -81,3 +82,11 @@ curve = SubResource("Curve2D_5tfj8")
 
 [node name="City" parent="." instance=ExtResource("1_n8t2r")]
 position = Vector2(1839, 509)
+
+[node name="NoPlacementArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NoPlacementArea"]
+polygon = PackedVector2Array(2.08165e-12, 60, 190, 60, 190, 560, 320, 560, 320, 300, 1030, 300, 1030, 810, 600, 810, 600, 885, 1450, 885, 1450, 485, 1770, 485, 1770, 435, 1915, 435, 1915, 585, 1770, 585, 1550, 585, 1550, 975, 500, 975, 500, 720, 930, 720, 930, 400, 420, 400, 420, 660, 90, 660, 90, 160, 2.08165e-12, 160)
+
+[node name="Tower" parent="." instance=ExtResource("6_w4ejl")]
+position = Vector2(697, 537)
