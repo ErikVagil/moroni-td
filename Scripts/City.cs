@@ -19,7 +19,7 @@ public partial class City : Area2D
 
 		gameManager.UpdateHealth(-enteredEnemy.GetAttackDamage());
 
-		enteredEnemy.QueueFree();
+		enteredEnemy.KillEnemy();
 		animationPlayer.Play(name: "attacked");
 	}
 }

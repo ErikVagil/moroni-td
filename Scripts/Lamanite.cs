@@ -40,7 +40,7 @@ public partial class Lamanite : PathFollow2D
 		health = newHealth;
 	}
 
-	private void KillEnemy() {
+	public void KillEnemy() {
 		gameManager.UpdateGold(goldDrop);
 		QueueFree();
 	}
