@@ -31,7 +31,6 @@ public partial class Tower : Area2D
 	private void OnAreaEntered(Area2D area) {
 		collidingAreas.Add(area);
 		isColliding = true;
-		GD.Print($"Collided with {area}");
 	}
 
 	private void OnAreaExited(Area2D area) {
@@ -39,6 +38,5 @@ public partial class Tower : Area2D
 		if (collidingAreas.Count == 0) {
 			isColliding = false;
 		}
-		GD.Print($"Stopped colliding with {area}");
 	}
 }

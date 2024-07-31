@@ -4,7 +4,7 @@ using System;
 public partial class GameManager : Node
 {
 	// Array containing all of the loaded enemy scenes
-	public static readonly Godot.Collections.Array<PackedScene> ENEMY_SCENES = new Godot.Collections.Array<PackedScene> {
+	public static readonly PackedScene[] ENEMY_SCENES = {
 		ResourceLoader.Load<PackedScene>("res://Prefabs/Lamanite.tscn"),
 	};
 

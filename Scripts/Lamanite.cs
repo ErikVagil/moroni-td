@@ -8,6 +8,7 @@ public partial class Lamanite : PathFollow2D
 	private int attackDamage = 1;
 
 	public override void _Process(double delta) {
+		// Move along the path
 		Progress += moveSpeed;
 	}
 

@@ -15,9 +15,10 @@ public partial class City : Area2D
 		if (area.GetParent().GetType() != typeof(Lamanite)) {
 			return;
 		}
-
 		Lamanite enteredEnemy = area.GetParent<Lamanite>();
+
 		gameManager.updateHealth(-enteredEnemy.getAttackDamage());
+		
 		enteredEnemy.QueueFree();
 		animationPlayer.Play(name: "attacked");
 	}
