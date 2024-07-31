@@ -10,20 +10,28 @@ public partial class GameManager : Node
 
 	private const int maxCityHealth = 50;
 	private int cityHealth = 50;
+	private int goldCount = 100;
 
 	private Label healthLabel = null;
+	private Label goldLabel = null;
 
     public override void _Ready()
     {
 		healthLabel = GetNode<Label>("%HealthLabel");
+		goldLabel = GetNode<Label>("%GoldLabel");
     }
 
-    public void updateHealth(int changeInHealth) {
+    public void UpdateHealth(int changeInHealth) {
 		int newHealth = cityHealth + changeInHealth;
 		if (newHealth <= maxCityHealth && newHealth >= 0) {
 			cityHealth = newHealth;
 		}
 
 		healthLabel.Text = $"Health: {cityHealth}/{maxCityHealth}";
+	}
+
+	public void UpdateGold(int changeInGold) {
+		goldCount += changeInGold;
+		goldLabel.Text = $"Gold: {goldCount}";
 	}
 }

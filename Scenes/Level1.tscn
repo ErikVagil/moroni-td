@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=10 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
@@ -12,6 +12,11 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kcnpn"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_5tfj8"]
 _data = {
@@ -53,6 +58,22 @@ text = "Health: 50/50
 label_settings = SubResource("LabelSettings_7ms1s")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="UILayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.889
+anchor_top = 0.049
+anchor_right = 1.0
+anchor_bottom = 0.091
+offset_left = 0.119888
+offset_top = 0.0799974
+offset_right = -70.0
+offset_bottom = -0.280006
+grow_horizontal = 0
+text = "Gold: 100"
+label_settings = SubResource("LabelSettings_kcnpn")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1

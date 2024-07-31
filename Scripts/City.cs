@@ -17,8 +17,8 @@ public partial class City : Area2D
 		}
 		Lamanite enteredEnemy = area.GetParent<Lamanite>();
 
-		gameManager.updateHealth(-enteredEnemy.getAttackDamage());
-		
+		gameManager.UpdateHealth(-enteredEnemy.GetAttackDamage());
+
 		enteredEnemy.QueueFree();
 		animationPlayer.Play(name: "attacked");
 	}
