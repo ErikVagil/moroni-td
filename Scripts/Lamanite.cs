@@ -9,10 +9,10 @@ public partial class Lamanite : PathFollow2D
 	protected int goldDrop = 5;
 	protected int health = 2;
 
-	private GameManager gameManager;
+	private GameManager gameManager = null;
 
     public override void _Ready() {
-		gameManager = GetNode<GameManager>("%GameManager");
+		gameManager = GetNode<GameManager>("../../GameManager");
     }
 
     public override void _Process(double delta) {
@@ -41,7 +41,7 @@ public partial class Lamanite : PathFollow2D
 	}
 
 	public void KillEnemy() {
-		gameManager.UpdateGold(goldDrop);
+		gameManager?.UpdateGold(goldDrop);
 		QueueFree();
 	}
 }

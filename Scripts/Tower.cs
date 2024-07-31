@@ -20,7 +20,7 @@ public partial class Tower : Area2D
 			// Follow the cursor
 			Position = GetGlobalMousePosition();
 
-			if (Input.IsActionJustPressed("build_accept")) {
+			if (Input.IsActionJustPressed("build_accept") && !isColliding) {
 				isInBuildMode = false;
 			}
 		} else {
