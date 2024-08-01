@@ -12,7 +12,7 @@ public partial class City : Area2D
 	}
 
 	private void OnAreaEntered(Area2D area) {
-		if (area.GetParent().GetType() != typeof(Lamanite)) {
+		if (!GameManager.IsAreaLamaniteChild(area)) {
 			return;
 		}
 		Lamanite enteredEnemy = area.GetParent<Lamanite>();

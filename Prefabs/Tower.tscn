@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx8d8qt0jx4rl"]
+[gd_scene load_steps=6 format=3 uid="uid://bx8d8qt0jx4rl"]
 
 [ext_resource type="Script" path="res://Scripts/Tower.cs" id="1_c35v1"]
 
@@ -14,6 +14,9 @@ height = 96
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14w37"]
 size = Vector2(96, 64)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqsxk"]
+radius = 230.0
+
 [node name="Tower" type="Area2D"]
 z_index = 3
 script = ExtResource("1_c35v1")
@@ -25,5 +28,12 @@ texture = SubResource("GradientTexture2D_frx68")
 position = Vector2(2.08165e-12, 16)
 shape = SubResource("RectangleShape2D_14w37")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_kqsxk")
+
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="area_exited" from="." to="." method="OnAreaExited"]
+[connection signal="area_entered" from="DetectionArea" to="." method="OnDetectionAreaEntered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="OnDetectionAreaExited"]

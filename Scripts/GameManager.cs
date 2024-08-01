@@ -34,4 +34,8 @@ public partial class GameManager : Node
 		goldCount += changeInGold;
 		goldLabel.Text = $"Gold: {goldCount}";
 	}
+
+	public static bool IsAreaLamaniteChild(Area2D area) {
+		return area.GetParent().GetType() == typeof(Lamanite);
+	}
 }
