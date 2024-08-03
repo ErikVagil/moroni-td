@@ -48,6 +48,13 @@ toggle_shop_ui={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Lamanites"
+2d_physics/layer_2="PlacementBlockers"
+2d_physics/layer_3="City"
+2d_physics/layer_4="DetectionAreas"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
