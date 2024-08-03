@@ -15,6 +15,7 @@ public partial class Tower : Area2D
 	private Lamanite target = null;
 	private readonly HashSet<Lamanite> possibleTargets = new();
 
+	private GameManager gameManager = null;
 	private Sprite2D sprite = null;
 	private Area2D detectionArea = null;
 	private Sprite2D radiusSprite = null;
@@ -24,6 +25,7 @@ public partial class Tower : Area2D
 	private PackedScene arrowResource = ResourceLoader.Load<PackedScene>("res://Prefabs/Arrow.tscn");
 
     public override void _Ready() {
+		gameManager = GetNode<GameManager>("../GameManager");
 		sprite = GetNode<Sprite2D>("./Sprite2D");
 		detectionArea = GetNode<Area2D>("./DetectionArea");
 		radiusSprite = GetNode<Sprite2D>("./DetectionArea/Sprite2D");
@@ -50,6 +52,9 @@ public partial class Tower : Area2D
 				sprite.Modulate = defaultMod;
 				radiusSprite.Hide();
 				cooldownTimer.Start();
+			} else if (Input.IsActionJustPressed("build_cancel")) {
+				gameManager.UpdateGold(50);
+				QueueFree();
 			}
 		} else {
 			if (target != null) {

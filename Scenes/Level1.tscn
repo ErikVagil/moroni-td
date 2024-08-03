@@ -1,11 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=18 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
 [ext_resource type="Texture2D" uid="uid://csp6jlt6mpiqo" path="res://Assets/background.png" id="1_djpkt"]
 [ext_resource type="PackedScene" uid="uid://cm5p8fbcogrk3" path="res://Prefabs/City.tscn" id="1_n8t2r"]
+[ext_resource type="Texture2D" uid="uid://ccnpub5in0678" path="res://Assets/tower_button_normal.png" id="2_jc2iy"]
+[ext_resource type="Texture2D" uid="uid://c1wrd62c8duu4" path="res://Assets/tower_button_click.png" id="3_ddqks"]
+[ext_resource type="Texture2D" uid="uid://b7j84wxud6rg6" path="res://Assets/tower_button_hover.png" id="4_owbnf"]
 [ext_resource type="PackedScene" uid="uid://cpkwuingvkygv" path="res://Prefabs/EnemySpawner.tscn" id="4_v5mgf"]
-[ext_resource type="PackedScene" uid="uid://bx8d8qt0jx4rl" path="res://Prefabs/Tower.tscn" id="6_w4ejl"]
+[ext_resource type="Texture2D" uid="uid://lebx81847qxe" path="res://Assets/x_button_normal.png" id="5_8khey"]
+[ext_resource type="Texture2D" uid="uid://hsm2nwicibdu" path="res://Assets/x_button_click.png" id="6_h188q"]
+[ext_resource type="Texture2D" uid="uid://bq23tudcmpele" path="res://Assets/x_button_hover.png" id="7_2omak"]
+
+[sub_resource type="Theme" id="Theme_fljse"]
+default_font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ms1s"]
 font_size = 32
@@ -16,6 +24,14 @@ shadow_size = 0
 [sub_resource type="LabelSettings" id="LabelSettings_kcnpn"]
 font_size = 32
 outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_76xpf"]
+default_font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_mn8oi"]
+font_size = 24
+outline_size = 12
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Curve2D" id="Curve2D_5tfj8"]
@@ -39,6 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_fljse")
 metadata/_edit_lock_ = true
 
 [node name="HealthLabel" type="Label" parent="UILayer/Control"]
@@ -75,6 +92,69 @@ grow_horizontal = 0
 text = "Gold: 100"
 label_settings = SubResource("LabelSettings_kcnpn")
 
+[node name="OpenShopButton" type="Button" parent="UILayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.5
+offset_top = 10.0
+offset_right = 80.5
+offset_bottom = 69.0
+grow_horizontal = 2
+theme = SubResource("Theme_76xpf")
+action_mode = 0
+text = "Open Shop"
+
+[node name="ShopContainer" type="PanelContainer" parent="UILayer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.298
+anchor_right = 0.704
+anchor_bottom = 0.218
+offset_left = 0.839985
+offset_right = -0.680107
+offset_bottom = -0.44001
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="UILayer/Control/ShopContainer"]
+layout_mode = 2
+color = Color(0.263341, 0.169484, 0.0792339, 1)
+
+[node name="GridContainer" type="GridContainer" parent="UILayer/Control/ShopContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Control/ShopContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BuyTowerButton" type="TextureButton" parent="UILayer/Control/ShopContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture_normal = ExtResource("2_jc2iy")
+texture_pressed = ExtResource("3_ddqks")
+texture_hover = ExtResource("4_owbnf")
+
+[node name="Label" type="Label" parent="UILayer/Control/ShopContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "50 Gold"
+label_settings = SubResource("LabelSettings_mn8oi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseShopButton" type="TextureButton" parent="UILayer/Control/ShopContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("5_8khey")
+texture_pressed = ExtResource("6_h188q")
+texture_hover = ExtResource("7_2omak")
+
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -109,5 +189,6 @@ position = Vector2(1839, 509)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NoPlacementArea"]
 polygon = PackedVector2Array(2.08165e-12, 60, 190, 60, 190, 560, 320, 560, 320, 300, 1030, 300, 1030, 810, 600, 810, 600, 885, 1450, 885, 1450, 485, 1770, 485, 1770, 435, 1915, 435, 1915, 585, 1770, 585, 1550, 585, 1550, 975, 500, 975, 500, 720, 930, 720, 930, 400, 420, 400, 420, 660, 90, 660, 90, 160, 2.08165e-12, 160)
 
-[node name="Tower" parent="." instance=ExtResource("6_w4ejl")]
-position = Vector2(697, 537)
+[connection signal="pressed" from="UILayer/Control/OpenShopButton" to="GameManager" method="OnOpenShopButtonPressed"]
+[connection signal="pressed" from="UILayer/Control/ShopContainer/GridContainer/VBoxContainer/BuyTowerButton" to="GameManager" method="OnBuyTowerButtonPressed"]
+[connection signal="pressed" from="UILayer/Control/ShopContainer/CloseShopButton" to="GameManager" method="OnCloseShopButtonPressed"]
