@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bertex1jsehpu"]
+[gd_scene load_steps=8 format=3 uid="uid://bertex1jsehpu"]
 
 [ext_resource type="Script" path="res://Scripts/Lamanite.cs" id="1_mixms"]
+[ext_resource type="Texture2D" uid="uid://bhwidf6jfsdwp" path="res://Assets/lamanite.png" id="2_50sj1"]
 
-[sub_resource type="Gradient" id="Gradient_t4oqh"]
-colors = PackedColorArray(0.316921, 0.521379, 0.422434, 1, 0.798781, 0.602217, 0.412929, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s42d"]
+atlas = ExtResource("2_50sj1")
+region = Rect2(0, 0, 40, 53)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eappp"]
-gradient = SubResource("Gradient_t4oqh")
-width = 30
-height = 40
-fill_to = Vector2(1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oigw7"]
+atlas = ExtResource("2_50sj1")
+region = Rect2(40, 0, 40, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cnff"]
+atlas = ExtResource("2_50sj1")
+region = Rect2(80, 0, 40, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7mgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s42d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oigw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cnff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oigw7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0784r"]
 size = Vector2(30, 40)
@@ -21,8 +45,10 @@ rotates = false
 loop = false
 script = ExtResource("1_mixms")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_eappp")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d7mgr")
+autoplay = "default"
+frame_progress = 0.5544
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -1,16 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bx8d8qt0jx4rl"]
+[gd_scene load_steps=7 format=3 uid="uid://bx8d8qt0jx4rl"]
 
 [ext_resource type="Script" path="res://Scripts/Tower.cs" id="1_c35v1"]
+[ext_resource type="Texture2D" uid="uid://bhvmqn7rfmne0" path="res://Assets/tower.png" id="2_2cjyu"]
 [ext_resource type="Texture2D" uid="uid://de83x0n2uucaf" path="res://Assets/tower_radius_230.png" id="2_x6ikp"]
-
-[sub_resource type="Gradient" id="Gradient_fsa60"]
-offsets = PackedFloat32Array(0, 0.529774, 0.99384)
-colors = PackedColorArray(0.439216, 0.270588, 0.156863, 1, 0.57, 0.464265, 0.2679, 1, 0.437752, 0.270797, 0.156368, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_frx68"]
-gradient = SubResource("Gradient_fsa60")
-width = 96
-height = 96
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14w37"]
 size = Vector2(96, 64)
@@ -25,7 +17,7 @@ z_index = 3
 script = ExtResource("1_c35v1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_frx68")
+texture = ExtResource("2_2cjyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, 16)

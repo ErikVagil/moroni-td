@@ -10,7 +10,7 @@ public partial class GameManager : Node
 
 	private const int maxCityHealth = 50;
 	private int cityHealth = 50;
-	private int goldCount = 100;
+	private int goldCount = 90;
 
 	private Label healthLabel = null;
 	private Label goldLabel = null;
