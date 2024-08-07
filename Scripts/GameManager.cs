@@ -11,7 +11,7 @@ public partial class GameManager : Node
 	private PackedScene towerResource = ResourceLoader.Load<PackedScene>("res://Prefabs/Tower.tscn");
 
 	private const int maxCityHealth = 20;
-	private int cityHealth = 5;
+	private int cityHealth = maxCityHealth;
 	private int goldCount = 90;
 
 	private Label healthLabel = null;
