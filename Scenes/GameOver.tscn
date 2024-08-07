@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://88nto3ny51el"]
+
+[ext_resource type="Texture2D" uid="uid://csp6jlt6mpiqo" path="res://Assets/background.png" id="1_mc4m5"]
+[ext_resource type="Script" path="res://Scripts/PlayButton.cs" id="2_h40y1"]
+[ext_resource type="Script" path="res://Scripts/MainMenuButton.cs" id="3_cf4xj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0rgy"]
+font_size = 96
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_apnvv"]
+default_font_size = 48
+
+[sub_resource type="Theme" id="Theme_c5oxe"]
+default_font_size = 48
+
+[node name="GameOver" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="BackgroundLayer"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_mc4m5")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Control"]
+layout_mode = 2
+offset_top = 456.0
+offset_right = 1920.0
+offset_bottom = 623.0
+size_flags_vertical = 4
+
+[node name="GameOverLabel" type="Label" parent="UILayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_m0rgy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="UILayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 25)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UILayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="UILayer/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_apnvv")
+text = "Play Again"
+script = ExtResource("2_h40y1")
+
+[node name="Spacer" type="Control" parent="UILayer/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 2.08165e-12)
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="UILayer/Control/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_c5oxe")
+text = "Main Menu"
+script = ExtResource("3_cf4xj")
+
+[connection signal="pressed" from="UILayer/Control/VBoxContainer/HBoxContainer/PlayButton" to="UILayer/Control/VBoxContainer/HBoxContainer/PlayButton" method="OnPressed"]
+[connection signal="pressed" from="UILayer/Control/VBoxContainer/HBoxContainer/MainMenuButton" to="UILayer/Control/VBoxContainer/HBoxContainer/MainMenuButton" method="OnPressed"]

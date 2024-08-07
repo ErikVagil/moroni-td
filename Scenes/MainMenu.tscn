@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3sjbdp8sj18v"]
+
+[ext_resource type="Texture2D" uid="uid://csp6jlt6mpiqo" path="res://Assets/background.png" id="1_5v8ks"]
+[ext_resource type="Script" path="res://Scripts/PlayButton.cs" id="2_jw0yc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y1fev"]
+font_size = 96
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_7g3yx"]
+default_font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_udhyx"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="BackgroundLayer"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_5v8ks")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Control"]
+layout_mode = 2
+offset_top = 456.0
+offset_right = 1920.0
+offset_bottom = 623.0
+size_flags_vertical = 4
+
+[node name="MainMenuLabel" type="Label" parent="UILayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Captain Moroni's Tower Defense"
+label_settings = SubResource("LabelSettings_y1fev")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="UILayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 25)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="UILayer/Control/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7g3yx")
+text = "Start"
+script = ExtResource("2_jw0yc")
+
+[node name="Spacer" type="Control" parent="UILayer/Control/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="UILayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.842
+anchor_top = 0.942
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.3599
+offset_top = 9.63997
+offset_right = -11.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Made by Erik Vagil"
+label_settings = SubResource("LabelSettings_udhyx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UILayer/Control/VBoxContainer/VBoxContainer/PlayButton" to="UILayer/Control/VBoxContainer/VBoxContainer/PlayButton" method="OnPressed"]

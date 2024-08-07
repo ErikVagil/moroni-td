@@ -10,8 +10,8 @@ public partial class GameManager : Node
 
 	private PackedScene towerResource = ResourceLoader.Load<PackedScene>("res://Prefabs/Tower.tscn");
 
-	private const int maxCityHealth = 50;
-	private int cityHealth = 50;
+	private const int maxCityHealth = 20;
+	private int cityHealth = 5;
 	private int goldCount = 90;
 
 	private Label healthLabel = null;
@@ -22,6 +22,9 @@ public partial class GameManager : Node
 		healthLabel = GetNode<Label>("%HealthLabel");
 		goldLabel = GetNode<Label>("%GoldLabel");
 		shopContainer = GetNode<PanelContainer>("%ShopContainer");
+
+		UpdateHealth(0);
+		UpdateGold(0);
     }
 
     public override void _Process(double delta) {
@@ -36,16 +39,21 @@ public partial class GameManager : Node
 
     public void UpdateHealth(int changeInHealth) {
 		int newHealth = cityHealth + changeInHealth;
-		if (newHealth <= maxCityHealth && newHealth >= 0) {
-			cityHealth = newHealth;
-		}
-
+		cityHealth = Math.Clamp(newHealth, 0, maxCityHealth);
 		healthLabel.Text = $"Health: {cityHealth}/{maxCityHealth}";
+
+		if (cityHealth == 0) {
+			TriggerGameOver();
+		}
 	}
 
 	public void UpdateGold(int changeInGold) {
 		goldCount += changeInGold;
 		goldLabel.Text = $"Gold: {goldCount}";
+	}
+
+	private void TriggerGameOver() {
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
 	}
 
 	public static bool IsAreaLamaniteChild(Area2D area) {
