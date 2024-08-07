@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Captain Moroni Tower Defense"
+config/version="1.0"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Assets/tower.png"
 
 [display]
 
