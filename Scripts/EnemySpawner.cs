@@ -9,15 +9,25 @@ public partial class EnemySpawner : Node2D
 
 	private Timer spawnerTimer = null;
 	private Path2D enemyPath = null;
+	private GameManager gameManager = null;
 
 	public override void _Ready() {
 		spawnerTimer = GetNode<Timer>("./SpawnerTimer");
 		enemyPath = GetNode<Path2D>("%EnemyPath");
-		// Test code
-		StartWave(enemyIDQueue);
+		gameManager = GetNode<GameManager>("%GameManager");
 	}
 
-	public void StartWave(int[] enemyIDQueue) {
+    public override void _Process(double delta) {
+        if ((enemyIDQueue == null || queueIndex >= enemyIDQueue.Length) &&
+			enemyPath.GetChildCount() == 0) {
+			gameManager.SetCanSendWave(true);
+			if (gameManager.GetWaveCount() < gameManager.GetMaxWaveCount()) {
+				gameManager.ShowStartWaveButton();
+			}
+		}
+    }
+
+    public void StartWave(int[] enemyIDQueue) {
 		this.enemyIDQueue = enemyIDQueue;
 		queueIndex = 0;
 		spawnerTimer.Start();
@@ -39,5 +49,9 @@ public partial class EnemySpawner : Node2D
 			SpawnEnemy();
 			spawnerTimer.Start();
 		}
+	}
+
+	public int GetNumEnemiesLeftInWave() {
+		return enemyIDQueue.Length - queueIndex;
 	}
 }

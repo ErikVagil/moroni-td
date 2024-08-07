@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://juwrxatulykq"]
+[gd_scene load_steps=19 format=3 uid="uid://juwrxatulykq"]
 
 [ext_resource type="Texture2D" uid="uid://5abw8wfyl1s4" path="res://Assets/path.png" id="1_a8vht"]
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_ay1pj"]
@@ -22,6 +22,11 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_kcnpn"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rv3vc"]
 font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
@@ -92,6 +97,19 @@ grow_horizontal = 0
 text = "Gold: 100"
 label_settings = SubResource("LabelSettings_kcnpn")
 
+[node name="WaveLabel" type="Label" parent="UILayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.055
+offset_left = 11.0
+offset_top = 7.0
+offset_right = -7.04001
+offset_bottom = -7.4
+text = "Wave: 1/5"
+label_settings = SubResource("LabelSettings_rv3vc")
+
 [node name="OpenShopButton" type="Button" parent="UILayer/Control"]
 layout_mode = 1
 anchors_preset = 5
@@ -105,6 +123,24 @@ grow_horizontal = 2
 theme = SubResource("Theme_76xpf")
 action_mode = 0
 text = "Open Shop"
+
+[node name="StartWaveButton" type="Button" parent="UILayer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -66.5
+offset_top = -52.0
+offset_right = 66.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start Wave
+"
 
 [node name="ShopContainer" type="PanelContainer" parent="UILayer/Control"]
 unique_name_in_owner = true
@@ -172,6 +208,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_v5mgf")]
+unique_name_in_owner = true
 position = Vector2(-50, 110)
 enemyIDQueue = PackedInt32Array(0, 0, 0, 0, 0)
 
@@ -192,5 +229,6 @@ collision_mask = 2
 polygon = PackedVector2Array(2.08165e-12, 60, 190, 60, 190, 560, 320, 560, 320, 300, 1030, 300, 1030, 810, 600, 810, 600, 885, 1450, 885, 1450, 485, 1770, 485, 1770, 435, 1915, 435, 1915, 585, 1770, 585, 1550, 585, 1550, 975, 500, 975, 500, 720, 930, 720, 930, 400, 420, 400, 420, 660, 90, 660, 90, 160, 2.08165e-12, 160)
 
 [connection signal="pressed" from="UILayer/Control/OpenShopButton" to="GameManager" method="OnOpenShopButtonPressed"]
+[connection signal="pressed" from="UILayer/Control/StartWaveButton" to="GameManager" method="OnStartWaveButtonPressed"]
 [connection signal="pressed" from="UILayer/Control/ShopContainer/GridContainer/VBoxContainer/BuyTowerButton" to="GameManager" method="OnBuyTowerButtonPressed"]
 [connection signal="pressed" from="UILayer/Control/ShopContainer/CloseShopButton" to="GameManager" method="OnCloseShopButtonPressed"]
