@@ -68,7 +68,6 @@ public partial class Tower : Area2D
 	}
 
 	private void OnAreaEntered(Area2D area) {
-		GD.Print($"Area: {area} entered");
 		if (!isInBuildMode) {
 			return;
 		}
@@ -80,7 +79,6 @@ public partial class Tower : Area2D
 	}
 
 	private void OnAreaExited(Area2D area) {
-		GD.Print($"Area: {area} exited");
 		if (!isInBuildMode) {
 			return;
 		}
@@ -94,7 +92,6 @@ public partial class Tower : Area2D
 	}
 
 	private void OnDetectionAreaEntered(Area2D area) {
-		GD.Print($"Detection area: {area} entered");
 		if (!GameManager.IsAreaLamaniteChild(area)) {
 			return;
 		}
@@ -104,7 +101,6 @@ public partial class Tower : Area2D
 	}
 
 	private void OnDetectionAreaExited(Area2D area) {
-		GD.Print($"Detection area: {area} exited");
 		if (!GameManager.IsAreaLamaniteChild(area)) {
 			return;
 		}

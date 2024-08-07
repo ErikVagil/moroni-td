@@ -12,7 +12,7 @@ public partial class Arrow : PathFollow2D
 
     public override void _Process(double delta) {
 		Progress += speed;
-		if (ProgressRatio >= 1f) {
+		if (ProgressRatio >= 0.9f) {
 			target.UpdateHealth(-damage);
 			QueueFree();
 		}
