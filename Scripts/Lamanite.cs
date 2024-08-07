@@ -4,7 +4,7 @@ using System;
 public partial class Lamanite : PathFollow2D
 {
 	[Export]
-	protected float moveSpeed = 2.5f;
+	protected float moveSpeed = 250f;
 	protected int attackDamage = 1;
 	protected int goldDrop = 5;
 	protected int health = 2;
@@ -17,7 +17,7 @@ public partial class Lamanite : PathFollow2D
 
     public override void _Process(double delta) {
 		// Move along the path
-		Progress += moveSpeed;
+		Progress += moveSpeed * (float)delta;
 	}
 
 	public int GetAttackDamage() {
